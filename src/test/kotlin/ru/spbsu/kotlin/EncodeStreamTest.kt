@@ -107,8 +107,18 @@ class EncodeStreamTest {
     fun decodeSample2_2() {
         decompress("./sample2.2.tgz", rootInputFolder)
         val reader = InputStreamReader(DecodeStream(rootInputFolder), "UTF-8")
-        reader.use{
+        reader.use {
             assertEquals("Скажете тоже, олимпиадное программирование", it.readText())
+        }
+    }
+
+    @Test
+    fun decodeSecret() {
+        decompress("./secret.tgz", rootInputFolder)
+        val reader = InputStreamReader(DecodeStream(rootInputFolder), "UTF-8")
+        println("secret message:")
+        reader.use {
+            println(it.readText())
         }
     }
 
